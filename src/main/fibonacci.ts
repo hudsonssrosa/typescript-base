@@ -1,5 +1,5 @@
 export class Fibonacci {
-    fibonacci(a:number):number {
-        throw new Error('Not implemented');
+    fibonacci(a: number):number {
+        return a;
     }
 }
