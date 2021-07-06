@@ -24,7 +24,10 @@ export class TicTacToe {
     }
 
     hasAnyBodyWon(){
-        return "X"
+        if (this.matrix[0][0] == this.matrix[0][1] && this.matrix[0][1] == this.matrix[0][2]){
+            return true;
+        }
+        return false
     }
 
 

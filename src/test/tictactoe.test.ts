@@ -25,14 +25,25 @@ describe("TicTacToe test", () => {
 
   it("should determine the winner, when we have 3 X's in a row", ()=>{
     let tictactoe: TicTacToe = new TicTacToe();
-     tictactoe.play('X', {posX: 0, posY: 0 })
+    tictactoe.play('X', {posX: 0, posY: 0 })
+    tictactoe.play('O', {posX: 1, posY: 0 })
     tictactoe.play('X', {posX: 0, posY: 1 })
+    tictactoe.play('O', {posX: 1, posY: 1 })
     tictactoe.play('X', {posX: 0, posY: 2 })
-    expect(tictactoe.hasAnyBodyWon()).toBe("X")
+    
+    expect(tictactoe.hasAnyBodyWon()).toBe(true)
   })
 
-
-
+  it("should determine if nobody won", ()=>{
+    let tictactoe: TicTacToe = new TicTacToe();
+    tictactoe.play('X', {posX: 0, posY: 0 })
+    tictactoe.play('O', {posX: 1, posY: 0 })
+    tictactoe.play('X', {posX: 0, posY: 1 })
+    tictactoe.play('O', {posX: 1, posY: 1 })
+    tictactoe.play('X', {posX: 0, posY: 2 })
+    
+    expect(tictactoe.hasAnyBodyWon()).toBe(true)
+  })
 
 
 });
