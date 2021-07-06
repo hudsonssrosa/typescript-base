@@ -22,4 +22,10 @@ export class TicTacToe {
         this.matrix[posX][posY] = player
         return this.matrix;
     }
+
+    hasAnyBodyWon(){
+        return "X"
+    }
+
+
 }

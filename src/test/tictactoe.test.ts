@@ -1,24 +1,38 @@
 import { TicTacToe } from "../main/tictactoe";
 
 describe("TicTacToe test", () => {
-  let tictactoe: TicTacToe = new TicTacToe();
 
   it("Should returns the position 1,1 in matrix for Player X", () => {
+    let tictactoe: TicTacToe = new TicTacToe();
     const position = { posX: 1, posY: 1 }
     const matrix = tictactoe.play('X', position)
     expect(matrix[1][1]).toBe('X')
   })
 
   it("Should returns the position 2,2 in matrix for Player O", () => {
+    let tictactoe: TicTacToe = new TicTacToe();
     const position = { posX: 2, posY: 2 }
     const matrix = tictactoe.play('O', position)
     expect(matrix[2][2]).toBe('O')
   })
 
   it("Should returns the position 2,2 in matrix for Player X", () => {
-    const position = { posX: 2, posY: 2 }
+    let tictactoe: TicTacToe = new TicTacToe();
+    let position = { posX: 2, posY: 2 }
     const matrix = tictactoe.play('O', position)
-    expect(matrix[2][2]).toBe('Position played')
+    expect(tictactoe.play('O', position)).toBe('Position played')
   })
+
+  it("should determine the winner, when we have 3 X's in a row", ()=>{
+    let tictactoe: TicTacToe = new TicTacToe();
+     tictactoe.play('X', {posX: 0, posY: 0 })
+    tictactoe.play('X', {posX: 0, posY: 1 })
+    tictactoe.play('X', {posX: 0, posY: 2 })
+    expect(tictactoe.hasAnyBodyWon()).toBe("X")
+  })
+
+
+
+
 
 });
