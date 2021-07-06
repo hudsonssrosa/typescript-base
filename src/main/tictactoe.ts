@@ -24,11 +24,14 @@ export class TicTacToe {
     }
 
     hasAnyBodyWon(){
-        if (this.matrix[0][0] == this.matrix[0][1] && this.matrix[0][1] == this.matrix[0][2]){
+
+        if (this.matrix[0][0] != undefined && this.matrix[0][0] == this.matrix[0][1] && this.matrix[0][1] == this.matrix[0][2]){
             return true;
         }
         return false
     }
+
+
 
 
 }

@@ -36,13 +36,9 @@ describe("TicTacToe test", () => {
 
   it("should determine if nobody won", ()=>{
     let tictactoe: TicTacToe = new TicTacToe();
-    tictactoe.play('X', {posX: 0, posY: 0 })
-    tictactoe.play('O', {posX: 1, posY: 0 })
-    tictactoe.play('X', {posX: 0, posY: 1 })
-    tictactoe.play('O', {posX: 1, posY: 1 })
-    tictactoe.play('X', {posX: 0, posY: 2 })
+
     
-    expect(tictactoe.hasAnyBodyWon()).toBe(true)
+    expect(tictactoe.hasAnyBodyWon()).toBe(false)
   })
 
 
