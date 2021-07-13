@@ -1,53 +1,40 @@
+import { gameState } from "./gameState";
+import { Matrix } from "./matrix";
+import { Players } from "./players";
 import { Position } from "./position";
 
 type Player = 'X' | 'O';
 
 export class TicTacToe {
-  private position: Position;
-  private matrix: string[][];
+  private matrix: Matrix;
 
   constructor() {
-    this.position = new Position();
-    this.matrix = [[], [], [], [], [], [], [], [], []];
+    this.matrix = new Matrix();
   }
 
-  play(player: Player, desiredPosition: Position) {
-    this.position = desiredPosition;
-    let coordinates = this.position.getPosition();
-    const row = coordinates.row;
-    const column = coordinates.column;
-    if (this.matrix[row][column] === "X" || this.matrix[row][column] === "0") {
-      return 'Position played';
+  play(player: Players, desiredPosition: Position) {
+    
+    if(this.matrix.ifPositionPlayed(desiredPosition)){
+      return gameState.TryAgain;
+    };
+    this.matrix.playPosition(player, desiredPosition)
+    if(this.isTheGameWon()) {
+      return gameState.GameWon;
     }
-    this.matrix[row][column] = player;
-    return this.matrix;
+    return gameState.NextTurn;
   }
 
-  hasAnyBodyWon() {
-    let gameState = false;
+  isTheGameWon() {
+    let winState = false;
     let pos = 0;
-    while (pos < 3 && gameState === false) {
-      gameState = this.isWinner(pos);
+    while (pos < 3 && winState === false) {
+      winState = this.isWinner(pos);
       pos++;
     }
-    return gameState;
+    return winState;
   }
 
   isWinner(pos: number){
-    return (this.wonByRow(pos) || this.wonByColumn(pos) || this.wonByDiagonal(pos));
+    return (this.matrix.wonByRow(pos) || this.matrix.wonByColumn(pos) || this.matrix.wonByDiagonal(pos));
   }
-
-  wonByRow(pos: number) {
-    return (this.matrix[pos][0] === "X" || this.matrix[pos][0] === "O") && this.matrix[pos][0] === this.matrix[pos][1] && this.matrix[pos][1] === this.matrix[pos][2];
-  }
-
-  wonByColumn(pos: number) {
-    return (this.matrix[0][pos] === "X" || this.matrix[0][pos] === "O") && this.matrix[0][pos] === this.matrix[1][pos] && this.matrix[1][pos] === this.matrix[2][pos];
-  }
-
-  wonByDiagonal(pos: number) {
-    return (this.matrix[1][1] === "X" || this.matrix[1][1] === "O") && (this.matrix[0][0] === this.matrix[1][1] && this.matrix[1][1] === this.matrix[2][2]) ||
-    (this.matrix[0][2] === this.matrix[1][1] && this.matrix[1][1] === this.matrix[2][0]);
-  }
-
 }
