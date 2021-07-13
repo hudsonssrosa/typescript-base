@@ -24,12 +24,17 @@ export class TicTacToe {
   }
 
   hasAnyBodyWon() {
-    for (let pos: number = 0; pos < 3; pos++) {
-      if (this.wonByRow(pos) || this.wonByColumn(pos) || this.wonByDiagonal(pos)) {
-        return true;
-      }
+    let gameState = false;
+    let pos = 0;
+    while (pos < 3 && gameState === false) {
+      gameState = this.isWinner(pos);
+      pos++;
     }
-    return false;
+    return gameState;
+  }
+
+  isWinner(pos: number){
+    return (this.wonByRow(pos) || this.wonByColumn(pos) || this.wonByDiagonal(pos));
   }
 
   wonByRow(pos: number) {

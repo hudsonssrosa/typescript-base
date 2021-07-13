@@ -44,38 +44,69 @@ describe("TicTacToe test", () => {
     expect(tictactoe.hasAnyBodyWon()).toBe(true)
   })
 
-  // it("should determine if nobody won", ()=>{
-  //   let tictactoe: TicTacToe = new TicTacToe();
-  //   tictactoe.play('O', {posX: 0, posY: 0 })
-  //   tictactoe.play('X', {posX: 0, posY: 1 })
-  //   tictactoe.play('O', {posX: 0, posY: 2 })
-
-  //   tictactoe.play('O', {posX: 1, posY: 0 })
-  //   tictactoe.play('X', {posX: 1, posY: 1 })
-  //   tictactoe.play('X', {posX: 1, posY: 2 })
-
-  //   tictactoe.play('X', {posX: 2, posY: 0 })
-  //   tictactoe.play('O', {posX: 2, posY: 1 })
-  //   tictactoe.play('O', {posX: 2, posY: 2 })
+  it("should determine if nobody won", ()=>{
+    position.desiredPosition(0,0);
+    tictactoe.play('O', position);
+    position.desiredPosition(0,1);
+    tictactoe.play('X', position);
+    position.desiredPosition(0,2);
+    tictactoe.play('O', position);
+    position.desiredPosition(1,0);
+    tictactoe.play('O', position);
+    position.desiredPosition(1,1);
+    tictactoe.play('X', position);
+    position.desiredPosition(1,2);
+    tictactoe.play('X', position);
+    position.desiredPosition(2,0);
+    tictactoe.play('X', position);
+    position.desiredPosition(2,1);
+    tictactoe.play('O', position);
+    position.desiredPosition(2,2);
+    tictactoe.play('O', position);
     
-  //   expect(tictactoe.hasAnyBodyWon()).toBe(false)
-  // })
+    expect(tictactoe.hasAnyBodyWon()).toBe(false)
+  })
 
-  // it("should determine if has a winner in the board", ()=>{
-  //   let tictactoe: TicTacToe = new TicTacToe();
-  //   tictactoe.play('X', {posX: 0, posY: 0 })
-  //   tictactoe.play('O', {posX: 0, posY: 1 })
-  //   tictactoe.play('X', {posX: 0, posY: 2 })
-
-  //   tictactoe.play('O', {posX: 1, posY: 0 })
-  //   tictactoe.play('X', {posX: 1, posY: 1 })
-  //   tictactoe.play('O', {posX: 1, posY: 2 })
-
-  //   tictactoe.play('X', {posX: 2, posY: 0 })
-  //   tictactoe.play('O', {posX: 2, posY: 1 })
-  //   tictactoe.play('X', {posX: 2, posY: 2 })
+  it("should determine if somebody won", ()=>{
+    position.desiredPosition(0,0);
+    tictactoe.play('X', position);
+    position.desiredPosition(1,0);
+    tictactoe.play('O', position);
+    position.desiredPosition(0,1);
+    tictactoe.play('X', position);
+    position.desiredPosition(0,2);
+    tictactoe.play('O', position);
+    position.desiredPosition(1,1);
+    tictactoe.play('X', position);
+    position.desiredPosition(2,2);
+    tictactoe.play('O', position);
+    position.desiredPosition(2,1);
+    tictactoe.play('X', position);
     
-  //   expect(tictactoe.hasAnyBodyWon()).toBe(true)
-  // })
+    expect(tictactoe.hasAnyBodyWon()).toBe(true)
+  })
+
+  it("should determine if has a winner in the board", ()=>{
+    position.desiredPosition(0,0);
+    tictactoe.play('X', position);
+    position.desiredPosition(0,1);
+    tictactoe.play('O', position);
+    position.desiredPosition(0,2);
+    tictactoe.play('X', position);
+    position.desiredPosition(1,0);
+    tictactoe.play('O', position);
+    position.desiredPosition(1,1);
+    tictactoe.play('X', position);
+    position.desiredPosition(1,2);
+    tictactoe.play('O', position);
+    position.desiredPosition(2,0);
+    tictactoe.play('X', position);
+    position.desiredPosition(2,1);
+    tictactoe.play('O', position);
+    position.desiredPosition(2,2);
+    tictactoe.play('X', position);
+
+    expect(tictactoe.hasAnyBodyWon()).toBe(true)
+  })
 
 });
